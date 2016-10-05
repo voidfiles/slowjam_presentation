@@ -1,0 +1,19 @@
+version: '2'
+services:
+  grafana:
+    image: advantageous/grafana
+    ports:
+      - "3003:9000"
+      - "8086:8086"
+      - "3004:8083"
+      - "8125:8125"
+      - "22022:22"
+  demo:
+    build: .
+    volumes:
+      - ./demo:/code/app
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    links:
+      - grafana
