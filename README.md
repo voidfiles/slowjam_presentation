@@ -1,6 +1,6 @@
 % Profiling Python in Production
 % Alex Kessinger
-% Sept 9, 2016
+% Oct 5, 2016
 
 ---
 
@@ -23,9 +23,42 @@ Basics
 
 Types of Tools
 
-- Profilers
 - Graphs/Events (statsd, ganglia, rrd, cacti)
 - Logs
+- Profilers
+
+---
+
+[StatsD](https://github.com/etsy/statsd)
+
+- `echo "foo:1|c" | nc -u -w0 127.0.0.1 8125`
+- Worry about what you record after the fact
+- Very Simple writes
+- Many graphing front-ends
+- others like this ganglia, cacti, rrd
+
+---
+
+![Grafana](http://grafana.org/assets/img/features/dashboard_ex.png)
+
+---
+
+Logs
+
+- Logstash, FluentD, Scribe, Flume
+
+---
+
+```bash
+2010/08/23 15:25:35 [INFO] client: 80.154.42.54, server: localhost, request: "GET /phpmy-admin/scripts/setup.php HTTP/1.1", host: "www.example.com"
+2010/08/23 15:25:35 [INFO] client: 80.154.42.54, server: localhost, request: "GET /phpmy-admin/scripts/setup.php HTTP/1.1", host: "www.example.com"
+2010/08/23 15:25:35 [INFO] client: 80.154.42.54, server: localhost, request: "GET /phpmy-admin/scripts/setup.php HTTP/1.1", host: "www.example.com"
+2010/08/23 15:25:35 [INFO] client: 80.154.42.54, server: localhost, request: "GET /phpmy-admin/scripts/setup.php HTTP/1.1", host: "www.example.com"
+```
+
+---
+
+![Kibana](https://www.elastic.co/assets/blt36c3f01e2d1f9048/Screen-Shot-2015-02-17-at-1.55.18-PM1-1024x573.png)
 
 ---
 
